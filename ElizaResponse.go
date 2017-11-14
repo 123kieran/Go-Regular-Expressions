@@ -8,12 +8,12 @@ import (
 )
 
 func ElizaResponse(input string) string {
-	if matched, _ := regexp.MatchString(`(?1).*\bfather\b.*`,input); matched {
+	if matched, _ := regexp.MatchString(`(?i).*\bfather\b.*`,input); matched {
 		return "Why dont you tell me more about your father"
 	}
-
-		if matched, _ := regexp.MatchString(`(?1)I am(.*),input); matched {
-		return "How do you now you are"
+		re:= regexp.MustCompile("(?i)I am (.*)")
+		if matched := re.MatchString(input); matched {
+		return re.ReplaceAllString(input,"How do you now you are $1 ?")
 	}
 
 	answers := []string{
@@ -57,12 +57,12 @@ fmt.Println()
 fmt.Println("I am not happy with your responses")
 fmt.Println(ElizaResponse("I am not happy with your responses"))
 fmt.Println()
-}
+
 
 fmt.Println("I am not sure that you understand the effect that your questions are having on me")
 fmt.Println(ElizaResponse("I am not sure that you understand the effect that your questions are having on me"))
 fmt.Println()
-}
+
 
 fmt.Println("I am supposed to just take what you’re saying at face value?")
 fmt.Println(ElizaResponse("I am supposed to just take what you’re saying at face value?"))
