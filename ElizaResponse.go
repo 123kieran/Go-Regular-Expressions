@@ -4,21 +4,30 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	"regexp"
 )
 
 func ElizaResponse(input string) string {
+	if matched, _ := regexp.MatchString(`(?1).*\bfather\b.*`,input); matched {
+		return "Why dont you tell me more about your father"
+	}
+
+		if matched, _ := regexp.MatchString(`(?1)I am(.*),input); matched {
+		return "How do you now you are"
+	}
+
 	answers := []string{
 	"I’m not sure what you’re trying to say. Could you explain it to me?",
     "How does that make you feel?",
-    "Why do you say that?",
+    "Why do you say that?",  
 	}
-	fmt.Println(answers[rand.Intn(len(answers))])
+	return answers[rand.Intn(len(answers))]
 }
 
 
 func main() {
 
-	rand.Seed(time.Now().UTC().UnixName()) 
+	rand.Seed(time.Now().Unix()) 
 
 fmt.Println("People say I look like both my mother and father.")
 fmt.Println(ElizaResponse("People say I look like both my mother and father."))
@@ -40,4 +49,22 @@ fmt.Println("My grandfather was French!")
 fmt.Println(ElizaResponse("My grandfather was French!"))
 fmt.Println()
 
+
+fmt.Println("I am happy.")
+fmt.Println(ElizaResponse("I am happy."))
+fmt.Println()
+
+fmt.Println("I am not happy with your responses")
+fmt.Println(ElizaResponse("I am not happy with your responses"))
+fmt.Println()
+}
+
+fmt.Println("I am not sure that you understand the effect that your questions are having on me")
+fmt.Println(ElizaResponse("I am not sure that you understand the effect that your questions are having on me"))
+fmt.Println()
+}
+
+fmt.Println("I am supposed to just take what you’re saying at face value?")
+fmt.Println(ElizaResponse("I am supposed to just take what you’re saying at face value?"))
+fmt.Println()
 }
